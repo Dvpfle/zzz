@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0vdi's Time</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
+    <style>
+        /* Base Style */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Roboto Mono', monospace;
+            background: linear-gradient(135deg, rgba(30,10,60,1) 0%, rgba(20,10,50,1) 60%, rgba(0,0,20,1) 100%);
+            color: #f5f5f5;
+            margin: 0;
+            overflow: hidden;
+            animation: backgroundAnimation 20s infinite ease-in-out;
+            cursor: none; /* Hide the default cursor */
+        }
+
+        /* Smooth background animation */
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(135deg, rgba(30,10,60,1) 0%, rgba(20,10,50,1) 60%, rgba(0,0,20,1) 100%);
+            }
+            50% {
+                background: linear-gradient(135deg, rgba(60,20,80,1) 0%, rgba(30,20,70,1) 60%, rgba(10,0,30,1) 100%);
+            }
+            100% {
+                background: linear-gradient(135deg, rgba(30,10,60,1) 0%, rgba(20,10,50,1) 60%, rgba(0,0,20,1) 100%);
+            }
+        }
+
+        /* Time Container */
+        .time-container {
+            position: relative;
+            text-align: center;
+            padding: 40px 50px;
+            border-radius: 25px;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0px 0px 100px rgba(255, 0, 255, 0.7);
+            border: 2px solid #2a1a70;
+            animation: containerGlow 3s infinite alternate;
+        }
+
+        @keyframes containerGlow {
+            0% {
+                box-shadow: 0px 0px 60px rgba(255, 0, 255, 0.6), 0px 0px 100px rgba(255, 0, 255, 0.5);
+            }
+            100% {
+                box-shadow: 0px 0px 80px rgba(255, 0, 255, 0.9), 0px 0px 150px rgba(255, 0, 255, 0.6);
+            }
+        }
+
+        /* Time Text */
+        .time {
+            font-size: 8em;
+            font-weight: 700;
+            color: #d88eff;
+            text-shadow: 0px 0px 20px rgba(216, 142, 255, 1), 0px 0px 40px rgba(216, 142, 255, 0.8);
+            animation: pulseGlow 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0px 0px 20px rgba(216, 142, 255, 1), 0px 0px 40px rgba(216, 142, 255, 0.8);
+            }
+            50% {
+                transform: scale(1.1);
+                text-shadow: 0px 0px 40px rgba(216, 142, 255, 1), 0px 0px 60px rgba(216, 142, 255, 0.9);
+            }
+        }
+
+        /* Date Text */
+        .date {
+            font-size: 2.2em;
+            color: #aaa;
+            margin: 20px 0;
+            letter-spacing: 1px;
+            opacity: 0.85;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.85;
+            }
+        }
+
+        /* Location Text */
+        .location {
+            font-size: 1.5em;
+            color: #bbb;
+            font-weight: 500;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Neon Particle Effect */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 0, 255, 0.5);
+            animation: particleAnimation 10s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes particleAnimation {
+            0% {
+                transform: translate(0, 0) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(500px, 500px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Random particle generator */
+        .particle:nth-child(1) {
+            width: 10px;
+            height: 10px;
+            animation-duration: 8s;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(2) {
+            width: 15px;
+            height: 15px;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(3) {
+            width: 8px;
+            height: 8px;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(4) {
+            width: 12px;
+            height: 12px;
+            animation-duration: 15s;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(5) {
+            width: 20px;
+            height: 20px;
+            animation-duration: 14s;
+            animation-delay: 2.5s;
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            position: absolute;
+            pointer-events: none;
+            width: 20px;
+            height: 20px;
+            background-color: #9b4dff; /* Dark Purple Color */
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(155, 77, 255, 0.7); /* Subtle glow */
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease-out;
+            opacity: 0.8;
+        }
+
+        /* Hover Effect: Cursor will grow a little when hovering over interactive elements */
+        a:hover, button:hover {
+            transform: scale(1.3);
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="time-container">
+        <div class="time" id="time"></div>
+        <div class="date" id="date"></div>
+        <div class="location">0vdi's Time</div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+    <div class="custom-cursor" id="cursor"></div>
+
+    <script>
+        // Get the cursor element
+        const cursor = document.getElementById("cursor");
+
+        // Track mouse position
+        document.addEventListener("mousemove", function(e) {
+            cursor.style.left = e.pageX + "px";
+            cursor.style.top = e.pageY + "px";
+        });
+
+        function updateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const dateString = now.toLocaleDateString('en-US', options);
+
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
